@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <title>销售全流程工具 — U助理</title>
+  <meta name="description" content="拓、圈、触、访、转：U拓宝、AI生图、AI海报、AI视频提示词、SPA随手记与 U助理，给同一类销售客户使用。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="U助理" />
+  <meta property="og:title" content="销售全流程工具 — U助理" />
+  <meta property="og:description" content="拓、圈、触、访、转：U拓宝、AI生图、AI海报、AI视频提示词、SPA随手记与 U助理，给同一类销售客户使用。" />
+  <meta property="og:image" content="static/share-cover.jpg" />
+  <meta itemprop="name" content="销售全流程工具 — U助理" />
+  <meta itemprop="description" content="拓、圈、触、访、转：U拓宝、AI生图、AI海报、AI视频提示词、SPA随手记与 U助理，给同一类销售客户使用。" />
+  <meta itemprop="image" content="static/share-cover.jpg" />
+  <script>
+    (function () {
+      var img = new URL('static/share-cover.jpg', location.href).href;
+      var pageUrl = location.href.split('#')[0];
+      var image = document.querySelector('meta[property="og:image"]');
+      var item = document.querySelector('meta[itemprop="image"]');
+      if (image) image.setAttribute('content', img);
+      if (item) item.setAttribute('content', img);
+      var urlMeta = document.querySelector('meta[property="og:url"]');
+      if (!urlMeta) {
+        urlMeta = document.createElement('meta');
+        urlMeta.setAttribute('property', 'og:url');
+        document.head.appendChild(urlMeta);
+      }
+      urlMeta.setAttribute('content', pageUrl);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css?v=m100" />
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="about.html">
+        <span class="logo-mark">U</span>
+        <span class="logo-text"><span class="brand-word" aria-label="U助理"><span class="brand-char">U</span><span class="brand-char">助</span><span class="brand-char">理</span></span></span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="product.html">产品介绍</a>
+        <a href="pricing.html">费用咨询</a>
+        <a href="tools.html" class="active">销售全流程工具</a>
+      </nav>
+      <a class="nav-cta" href="about.html">联系我们</a>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main class="flow-page">
+    <section class="page-hero flow-hero">
+      <div class="container">
+        <p class="section-label">销售全流程</p>
+        <h1>销售过程里，这些也能用上</h1>
+        <p class="page-hero__desc">
+          拓客、出内容、做跟进，这里都有对应的工具。
+        </p>
+      </div>
+    </section>
+
+    <section class="section flow-board" style="padding-top: 4px;">
+      <div class="container">
+        <div class="flow-stage">
+        <div class="orbit" id="ring">
+          <div class="orbit__ring">
+            <svg class="orbit__track" viewBox="0 0 440 440" aria-hidden="true">
+              <defs>
+                <linearGradient id="orbitGrad" x1="40" y1="24" x2="400" y2="416" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#7dd3fc"/>
+                  <stop offset="48%" stop-color="#60a5fa"/>
+                  <stop offset="100%" stop-color="#c084fc"/>
+                </linearGradient>
+                <linearGradient id="arrowGrad" x1="60" y1="40" x2="390" y2="400" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#67e8f9"/>
+                  <stop offset="38%" stop-color="#60a5fa"/>
+                  <stop offset="72%" stop-color="#a78bfa"/>
+                  <stop offset="100%" stop-color="#22d3ee"/>
+                </linearGradient>
+                <filter id="orbitSoft" x="-25%" y="-25%" width="150%" height="150%">
+                  <feGaussianBlur stdDeviation="2.4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <marker id="orbitArrow" markerWidth="14" markerHeight="14" refX="8" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+                  <path d="M2 2.2 L11.4 7 L2 11.8" fill="none" stroke="#e0f2fe" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+              </defs>
+              <circle cx="220" cy="220" r="116" fill="none" stroke="url(#orbitGrad)" stroke-width="1.25" opacity="0.42"/>
+              <circle cx="220" cy="220" r="104" fill="none" stroke="#c5e4ff" stroke-width="1.15" opacity="0.5"/>
+              <circle cx="220" cy="220" r="170" fill="none" stroke="rgba(59,130,246,0.2)" stroke-width="5"/>
+              <circle class="orbit__dash" cx="220" cy="220" r="170" fill="none" stroke="rgba(191,219,254,0.95)" stroke-width="2" stroke-dasharray="8 9" stroke-linecap="round"/>
+              <g fill="none" stroke="url(#arrowGrad)" stroke-linecap="round">
+                <path d="M265.7 79.2 A148 148 0 0 1 339.7 133" stroke-width="6" opacity="0.3" filter="url(#orbitSoft)"/>
+                <path d="M368 220 A148 148 0 0 1 339.7 307" stroke-width="6" opacity="0.3" filter="url(#orbitSoft)"/>
+                <path d="M265.7 360.8 A148 148 0 0 1 174.3 360.8" stroke-width="6" opacity="0.3" filter="url(#orbitSoft)"/>
+                <path d="M100.3 307 A148 148 0 0 1 72 220" stroke-width="6" opacity="0.3" filter="url(#orbitSoft)"/>
+                <path d="M100.3 133 A148 148 0 0 1 174.3 79.2" stroke-width="6" opacity="0.3" filter="url(#orbitSoft)"/>
+                <path d="M265.7 79.2 A148 148 0 0 1 339.7 133" stroke-width="2.2" marker-end="url(#orbitArrow)"/>
+                <path d="M368 220 A148 148 0 0 1 339.7 307" stroke-width="2.2" marker-end="url(#orbitArrow)"/>
+                <path d="M265.7 360.8 A148 148 0 0 1 174.3 360.8" stroke-width="2.2" marker-end="url(#orbitArrow)"/>
+                <path d="M100.3 307 A148 148 0 0 1 72 220" stroke-width="2.2" marker-end="url(#orbitArrow)"/>
+                <path d="M100.3 133 A148 148 0 0 1 174.3 79.2" stroke-width="2.2" marker-end="url(#orbitArrow)"/>
+              </g>
+            </svg>
+            <div class="orbit__halo" aria-hidden="true"></div>
+            <div class="orbit__core">
+              <svg class="orbit__mark" viewBox="0 0 100 64" aria-hidden="true">
+                <defs>
+                  <linearGradient id="flowS" x1="12" y1="12" x2="90" y2="52" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#f7fbff"/>
+                    <stop offset="40%" stop-color="#9dcbff"/>
+                    <stop offset="100%" stop-color="#3b78ee"/>
+                  </linearGradient>
+                </defs>
+                <path d="M20 46C18 24 40 14 54 30C66 44 78 48 86 28" fill="none" stroke="url(#flowS)" stroke-width="16" stroke-linecap="round"/>
+              </svg>
+              <span>全流程</span>
+            </div>
+            <a class="orbit__node orbit__node--tuo" href="#tuo" aria-label="拓，U拓宝">
+              <svg class="orbit__ico" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4.2" y="3.6" width="15.6" height="16.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M7.6 8.3h8.8M7.6 12h8.8M7.6 15.7h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              <span class="brand-char">拓</span>
+            </a>
+            <a class="orbit__node orbit__node--quan" href="#quan" aria-label="圈，AI生图/海报">
+              <svg class="orbit__ico" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10 13.2a4.2 4.2 0 0 0 6.3.5l1.7-1.7a4.2 4.2 0 0 0-6-6L10.8 7.2" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+                <path d="M14 10.8a4.2 4.2 0 0 0-6.3-.5l-1.7 1.7a4.2 4.2 0 0 0 6 6l1.2-1.2" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+              </svg>
+              <span class="brand-char">圈</span>
+            </a>
+            <a class="orbit__node orbit__node--chu" href="#chu" aria-label="触，AI提示词">
+              <svg class="orbit__ico" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M10.1 2.4a1.45 1.45 0 0 0-1.45 1.45v5.6l-.85-.62a1.5 1.5 0 0 0-2.1 2.14l3.7 4.15c.28.3.43.7.43 1.12v1.7a1.65 1.65 0 0 0 1.65 1.65h.7a3.3 3.3 0 0 0 3.15-2.28l1.15-3.5a1.55 1.55 0 0 0-1.48-2.05h-.72V6.15a1.45 1.45 0 0 0-2.9 0v3.55h-.7V3.85A1.45 1.45 0 0 0 10.1 2.4z"/>
+              </svg>
+              <span class="brand-char">触</span>
+            </a>
+            <a class="orbit__node orbit__node--fang" href="#fang" aria-label="访，SPA">
+              <svg class="orbit__ico" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.2 6h10.2A2.2 2.2 0 0 1 18.6 8.2v4.6a2.2 2.2 0 0 1-2.2 2.2H10l-3.2 2.3v-2.3H6.2A2.2 2.2 0 0 1 4 12.8V8.2A2.2 2.2 0 0 1 6.2 6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="8.2" cy="10.5" r="0.9" fill="currentColor"/>
+                <circle cx="11.6" cy="10.5" r="0.9" fill="currentColor"/>
+                <circle cx="15" cy="10.5" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="brand-char">访</span>
+            </a>
+            <a class="orbit__node orbit__node--zhuan" href="#zhuan" aria-label="转，U助理">
+              <svg class="orbit__ico" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12a8 8 0 0 0-13.7-5.6L5 8.5" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 4v5h5" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 12a8 8 0 0 0 13.7 5.6L19 15.5" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19 20v-5h-5" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="brand-char">转</span>
+            </a>
+          </div>
+        </div>
+
+        <ol class="skill-list">
+          <li class="skill skill--tuo" id="tuo">
+            <div class="skill__main">
+              <h2 class="skill__head">
+                <span class="skill__name">U拓宝</span>
+                <span class="skill__tag">帮您找到可持续发展的渠道</span>
+                <div class="skill__actions">
+                <button type="button" class="skill__go" data-code="static/ma2.jpg" data-title="U拓宝">
+                  <svg class="skill__go-ico" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <path fill="currentColor" d="M14 14h2.4v2.4H14zm4.2 0H20.6v2.4h-2.4zM14 18.2h2.4V20.6H14zm4.2 0h2.4v2.4h-2.4z"/>
+                  </svg>
+                  <span>扫码体验</span>
+                  <svg class="skill__go-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 16 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button type="button" class="skill__video" data-video="static/luyan1.mp4" data-title="U拓宝">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 7.6v8.8l7.2-4.4-7.2-4.4z" fill="currentColor"/></svg>
+                  <span>视频</span>
+                </button>
+                </div>
+              </h2>
+              <div class="skill__qa">
+                <p class="skill__q">有新客难获、转介绍难开口？</p>
+                <p class="skill__a">我能解决人脉转不成持续生意的难题，能带来权益换流量、三步建圈与三秒核销，把客流留成自己的私域。</p>
+              </div>
+            </div>
+          </li>
+          <li class="flow-side flow-side--left">
+            <div class="skill skill--zhuan" id="zhuan">
+              <div class="skill__main">
+                <h2 class="skill__head">
+                  <span class="skill__name">U助理</span>
+                  <span class="skill__tag">每年节省¥5W的秘密</span>
+                  <div class="skill__actions">
+                  <a class="skill__go skill__go--intro" href="product.html">
+                    <span>查看介绍</span>
+                    <svg class="skill__go-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 16 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                  <a class="skill__video" href="index.html#hero-video">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 7.6v8.8l7.2-4.4-7.2-4.4z" fill="currentColor"/></svg>
+                    <span>视频</span>
+                  </a>
+                  </div>
+                </h2>
+                <div class="skill__qa">
+                  <p class="skill__q">有重复提醒和批量跟进占用太多时间？</p>
+                  <p class="skill__a">我能解决高频事务挤占沟通时间的难题。助手把重复事务按时做好，把您的宝贵时间用于客户沟通与专业判断。</p>
+                </div>
+              </div>
+            </div>
+            <div class="skill skill--fang" id="fang">
+              <div class="skill__main">
+                <h2 class="skill__head">
+                  <span class="skill__name">SPA</span>
+                  <span class="skill__tag">持续成为销售绩优高手</span>
+                  <div class="skill__actions">
+                  <button type="button" class="skill__go" data-code="static/ma1.jpg" data-title="SPA">
+                    <svg class="skill__go-ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <path fill="currentColor" d="M14 14h2.4v2.4H14zm4.2 0H20.6v2.4h-2.4zM14 18.2h2.4V20.6H14zm4.2 0h2.4v2.4h-2.4z"/>
+                    </svg>
+                    <span>扫码体验</span>
+                    <svg class="skill__go-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 16 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button type="button" class="skill__video" data-pending="1" data-title="SPA">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 7.6v8.8l7.2-4.4-7.2-4.4z" fill="currentColor"/></svg>
+                    <span>视频</span>
+                  </button>
+                  </div>
+                </h2>
+                <div class="skill__qa">
+                  <p class="skill__q">拜访太多、进度难把控，都散在聊天记录里无法及时跟进？</p>
+                  <p class="skill__a">我能解决不知道谁停在哪一段、该不该再联系的难题。按跟进节点记录每次拜访，可随时查看的推进情况与停留。</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="flow-side flow-side--right">
+            <div class="skill skill--quan skill--pair" id="quan">
+              <div class="skill__part">
+                <h2 class="skill__head">
+                  <span class="skill__name">AI生图</span>
+                  <span class="skill__tag">从办活动的卡点释放出来</span>
+                  <div class="skill__actions">
+                  <button type="button" class="skill__go" data-code="static/ma1.jpg" data-title="AI生图">
+                    <svg class="skill__go-ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <path fill="currentColor" d="M14 14h2.4v2.4H14zm4.2 0H20.6v2.4h-2.4zM14 18.2h2.4V20.6H14zm4.2 0h2.4v2.4h-2.4z"/>
+                    </svg>
+                    <span>扫码体验</span>
+                    <svg class="skill__go-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 16 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button type="button" class="skill__video" data-pending="1" data-title="AI生图">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 7.6v8.8l7.2-4.4-7.2-4.4z" fill="currentColor"/></svg>
+                    <span>视频</span>
+                  </button>
+                  </div>
+                </h2>
+                <div class="skill__qa">
+                  <p class="skill__q">有沟通要用图、自己做不出来？</p>
+                  <p class="skill__a">我能解决等设计来不及的难题。填写文字说明，并可加入人物、背景与 Logo，可生成直接用于客户沟通的图片。</p>
+                </div>
+              </div>
+              <div class="skill__part" id="quan-poster">
+                <h2 class="skill__head">
+                  <span class="skill__name">AI海报</span>
+                  <span class="skill__tag">改一版不用再等一轮</span>
+                  <div class="skill__actions">
+                  <button type="button" class="skill__go" data-code="static/ma1.jpg" data-title="AI海报">
+                    <svg class="skill__go-ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                      <path fill="currentColor" d="M14 14h2.4v2.4H14zm4.2 0H20.6v2.4h-2.4zM14 18.2h2.4V20.6H14zm4.2 0h2.4v2.4h-2.4z"/>
+                    </svg>
+                    <span>扫码体验</span>
+                    <svg class="skill__go-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 16 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button type="button" class="skill__video" data-pending="1" data-title="AI海报">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 7.6v8.8l7.2-4.4-7.2-4.4z" fill="currentColor"/></svg>
+                    <span>视频</span>
+                  </button>
+                  </div>
+                </h2>
+                <div class="skill__qa">
+                  <p class="skill__q">有海报要发出去、改一版就要再等一轮？</p>
+                  <p class="skill__a">我能解决不会排版、反复改稿的难题。选定风格或参考图并填写文案，可生成直接对外发送的海报。</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="skill skill--chu" id="chu">
+            <div class="skill__main">
+              <h2 class="skill__head">
+                <span class="skill__name">AI提示词</span>
+                <span class="skill__tag">公域转私域新媒体助手</span>
+                <div class="skill__actions">
+                <button type="button" class="skill__go" data-code="static/ma1.jpg" data-title="AI提示词">
+                  <svg class="skill__go-ico" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <path fill="currentColor" d="M14 14h2.4v2.4H14zm4.2 0H20.6v2.4h-2.4zM14 18.2h2.4V20.6H14zm4.2 0h2.4v2.4h-2.4z"/>
+                  </svg>
+                  <span>扫码体验</span>
+                  <svg class="skill__go-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 16 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button type="button" class="skill__video" data-video="static/luyan2.mp4" data-title="AI提示词">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 7.6v8.8l7.2-4.4-7.2-4.4z" fill="currentColor"/></svg>
+                  <span>视频</span>
+                </button>
+                </div>
+              </h2>
+              <div class="skill__qa">
+                <p class="skill__q">有想用短视频触达客户、提示词不会写？</p>
+                <p class="skill__a">我能解决人物和场景对不上、做一条要来回试的难题。选图、填口播、一键出提示词，可直接复制到即梦使用，同一人物还可直接续写。</p>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <svg class="flow-wires" aria-hidden="true"></svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-band reveal">
+          <h2>看中哪一项，直接来问</h2>
+          <p class="cta-lines">
+            <span>想看实际怎么用，联系我们。</span>
+          </p>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="about.html">联系我们</a>
+            <a class="btn btn-ghost" href="index.html">返回首页</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="logo" href="about.html">
+            <span class="logo-mark">U</span>
+            <span class="logo-text"><span class="brand-word" aria-label="U助理"><span class="brand-char">U</span><span class="brand-char">助</span><span class="brand-char">理</span></span></span>
+          </a>
+          <p>专为销售人员打造的 AI 服务助手。<br />让 AI 负责执行，让人负责决策。</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>产品</h4>
+            <a href="product.html">产品介绍</a>
+            <a href="tools.html">销售全流程工具</a>
+            <a href="pricing.html">费用咨询</a>
+            <a href="index.html">宣传视频</a>
+            <a href="product.html#faq">常见问题</a>
+          </div>
+          <div class="footer-col">
+            <h4>公司</h4>
+            <a href="about.html">联系我们</a>
+            <a href="privacy.html">隐私政策</a>
+            <a href="terms.html">服务条款</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <div class="footer-legal-left">
+          <p class="footer-copyright">© 2026 U助理 · 让 AI 负责执行，让人负责决策</p>
+          <p class="footer-icp">
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">津ICP备2026004555号-5</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="back-top" aria-label="回到顶部" title="回到顶部">
+    <span class="back-top__ring" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5"></path>
+      <path d="M5 12l7-7 7 7"></path>
+    </svg>
+  </button>
+
+  <div class="code-mask" id="codeMask" hidden>
+    <div class="code-dialog" role="dialog" aria-modal="true" aria-labelledby="codeTitle">
+      <button type="button" class="code-close" aria-label="关闭">×</button>
+      <p class="code-title" id="codeTitle"></p>
+      <img class="code-img" alt="" width="168" height="168">
+      <p class="code-hint">微信扫一扫，进入小程序</p>
+    </div>
+  </div>
+
+  <div class="code-mask video-mask" id="videoMask" hidden>
+    <div class="code-dialog video-dialog" role="dialog" aria-modal="true" aria-labelledby="videoTitle">
+      <button type="button" class="code-close" aria-label="关闭">×</button>
+      <p class="code-title" id="videoTitle"></p>
+      <video class="video-player" controls playsinline preload="metadata"></video>
+      <p class="video-pending" hidden>介绍视频正在准备，随后上线。</p>
+    </div>
+  </div>
+
+  <script src="js/main.js?v=m17"></script>
+  <script>
+    (function () {
+      var stage = document.querySelector('.flow-stage');
+      var svg = document.querySelector('.flow-wires');
+      if (!stage || !svg) return;
+      var ns = 'http://www.w3.org/2000/svg';
+      var pairs = ['tuo', 'quan', 'chu', 'fang', 'zhuan'];
+
+      function local(rect, box) {
+        return {
+          left: rect.left - box.left,
+          right: rect.right - box.left,
+          top: rect.top - box.top,
+          bottom: rect.bottom - box.top,
+          width: rect.width,
+          height: rect.height
+        };
+      }
+
+      function draw() {
+        svg.replaceChildren();
+        if (window.matchMedia('(max-width: 980px)').matches) return;
+        var box = stage.getBoundingClientRect();
+        if (!box.width || !box.height) return;
+        svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
+
+        var defs = document.createElementNS(ns, 'defs');
+        var filter = document.createElementNS(ns, 'filter');
+        filter.setAttribute('id', 'wireGlow');
+        filter.setAttribute('x', '-50%');
+        filter.setAttribute('y', '-50%');
+        filter.setAttribute('width', '200%');
+        filter.setAttribute('height', '200%');
+        var blur = document.createElementNS(ns, 'feGaussianBlur');
+        blur.setAttribute('stdDeviation', '2.6');
+        filter.appendChild(blur);
+        defs.appendChild(filter);
+        svg.appendChild(defs);
+
+        pairs.forEach(function (id) {
+          var cardEl = id === 'quan'
+            ? stage.querySelector('.flow-side--right')
+            : document.getElementById(id);
+          var nodeEl = stage.querySelector('.orbit__node--' + id);
+          if (!cardEl || !nodeEl) return;
+          var card = local(cardEl.getBoundingClientRect(), box);
+          var node = local(nodeEl.getBoundingClientRect(), box);
+          var nx = node.left + node.width / 2;
+          var ny = node.top + node.height / 2;
+          var tone = getComputedStyle(cardEl).getPropertyValue('--tone').trim() || '#c4b5fd';
+          var d;
+          var start;
+          var end;
+
+          if (id === 'tuo') {
+            var x = nx;
+            start = { x: x, y: node.top - 1 };
+            end = { x: x, y: card.bottom + 2 };
+            d = 'M' + start.x.toFixed(1) + ' ' + start.y.toFixed(1) + ' L' + end.x.toFixed(1) + ' ' + end.y.toFixed(1);
+          } else if (id === 'chu') {
+            var ringEl = stage.querySelector('.orbit__ring');
+            var ring = local(ringEl.getBoundingClientRect(), box);
+            var land = ring.left + ring.width / 2;
+            start = { x: land, y: ring.top + ring.height * 0.91 };
+            end = { x: land, y: card.top - 2 };
+            d = 'M' + start.x.toFixed(1) + ' ' + start.y.toFixed(1) + ' L' + end.x.toFixed(1) + ' ' + end.y.toFixed(1);
+          } else if (id === 'zhuan' || id === 'fang' || id === 'quan') {
+            var toRight = id !== 'quan';
+            var xNode = toRight ? node.left - 1 : node.right + 1;
+            var xCard = toRight ? card.right + 2 : card.left - 2;
+            var y = ny;
+            var yCard = Math.min(card.bottom - 22, Math.max(card.top + 22, y));
+            start = { x: xNode, y: y };
+            end = { x: xCard, y: Math.abs(yCard - y) > 10 ? yCard : y };
+            if (Math.abs(yCard - y) > 10) {
+              var mid = (xNode + xCard) / 2;
+              d = 'M' + xNode.toFixed(1) + ' ' + y.toFixed(1) +
+                ' L' + mid.toFixed(1) + ' ' + y.toFixed(1) +
+                ' L' + mid.toFixed(1) + ' ' + yCard.toFixed(1) +
+                ' L' + xCard.toFixed(1) + ' ' + yCard.toFixed(1);
+            } else {
+              d = 'M' + xNode.toFixed(1) + ' ' + y.toFixed(1) + ' L' + xCard.toFixed(1) + ' ' + y.toFixed(1);
+            }
+          } else {
+            return;
+          }
+
+          var grad = document.createElementNS(ns, 'linearGradient');
+          grad.setAttribute('id', 'wg-' + id);
+          grad.setAttribute('gradientUnits', 'userSpaceOnUse');
+          grad.setAttribute('x1', start.x.toFixed(1));
+          grad.setAttribute('y1', start.y.toFixed(1));
+          grad.setAttribute('x2', end.x.toFixed(1));
+          grad.setAttribute('y2', end.y.toFixed(1));
+          var stopA = document.createElementNS(ns, 'stop');
+          stopA.setAttribute('offset', '0%');
+          stopA.setAttribute('stop-color', '#ffffff');
+          stopA.setAttribute('stop-opacity', '0.95');
+          var stopB = document.createElementNS(ns, 'stop');
+          stopB.setAttribute('offset', '18%');
+          stopB.setAttribute('stop-color', tone);
+          var stopC = document.createElementNS(ns, 'stop');
+          stopC.setAttribute('offset', '100%');
+          stopC.setAttribute('stop-color', tone);
+          stopC.setAttribute('stop-opacity', '0.45');
+          grad.appendChild(stopA);
+          grad.appendChild(stopB);
+          grad.appendChild(stopC);
+          defs.appendChild(grad);
+
+          var glow = document.createElementNS(ns, 'path');
+          glow.setAttribute('d', d);
+          glow.setAttribute('fill', 'none');
+          glow.setAttribute('stroke', tone);
+          glow.setAttribute('stroke-width', '8');
+          glow.setAttribute('stroke-linecap', 'round');
+          glow.setAttribute('stroke-linejoin', 'round');
+          glow.setAttribute('opacity', '0.55');
+          glow.setAttribute('filter', 'url(#wireGlow)');
+          svg.appendChild(glow);
+
+          var path = document.createElementNS(ns, 'path');
+          path.setAttribute('d', d);
+          path.setAttribute('fill', 'none');
+          path.setAttribute('stroke', 'url(#wg-' + id + ')');
+          path.setAttribute('stroke-width', '1.7');
+          path.setAttribute('stroke-linecap', 'round');
+          path.setAttribute('stroke-linejoin', 'round');
+          svg.appendChild(path);
+
+          var dot = document.createElementNS(ns, 'circle');
+          dot.setAttribute('cx', end.x.toFixed(1));
+          dot.setAttribute('cy', end.y.toFixed(1));
+          dot.setAttribute('r', '3.4');
+          dot.setAttribute('fill', tone);
+          svg.appendChild(dot);
+        });
+      }
+
+      window.addEventListener('resize', draw);
+      window.addEventListener('load', draw);
+      if (window.ResizeObserver) new ResizeObserver(draw).observe(stage);
+      draw();
+      setTimeout(draw, 200);
+      setTimeout(draw, 600);
+    })();
+
+    (function () {
+      var mask = document.getElementById('codeMask');
+      if (!mask) return;
+      var img = mask.querySelector('.code-img');
+      var title = mask.querySelector('.code-title');
+
+      function close() {
+        mask.hidden = true;
+        document.body.classList.remove('share-open');
+      }
+
+      document.querySelectorAll('.skill__go[data-code]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var name = btn.getAttribute('data-title') || '';
+          img.src = btn.getAttribute('data-code');
+          img.alt = name + '小程序码';
+          title.textContent = name;
+          mask.hidden = false;
+          document.body.classList.add('share-open');
+        });
+      });
+
+      mask.addEventListener('click', function (event) {
+        if (event.target === mask || event.target.closest('.code-close')) close();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !mask.hidden) close();
+      });
+    })();
+
+    (function () {
+      var mask = document.getElementById('videoMask');
+      if (!mask) return;
+      var video = mask.querySelector('.video-player');
+      var title = mask.querySelector('.code-title');
+      var pending = mask.querySelector('.video-pending');
+
+      function close() {
+        mask.hidden = true;
+        document.body.classList.remove('share-open');
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+      }
+
+      document.querySelectorAll('.skill__video[data-video], .skill__video[data-pending]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var name = btn.getAttribute('data-title') || '';
+          var src = btn.getAttribute('data-video');
+          title.textContent = name ? name + ' · 视频介绍' : '视频介绍';
+          if (src) {
+            pending.hidden = true;
+            video.hidden = false;
+            mask.querySelector('.video-dialog').classList.remove('is-pending');
+            video.src = src;
+            video.play().catch(function () {});
+          } else {
+            video.hidden = true;
+            pending.hidden = false;
+            mask.querySelector('.video-dialog').classList.add('is-pending');
+          }
+          mask.hidden = false;
+          document.body.classList.add('share-open');
+        });
+      });
+
+      mask.addEventListener('click', function (event) {
+        if (event.target === mask || event.target.closest('.code-close')) close();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !mask.hidden) close();
+      });
+    })();
+  </script>
+</body>
+</html>

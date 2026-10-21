@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <title>费用咨询 — U助理</title>
+  <meta name="description" content="U助理标准价与早鸟价：首次开通费与月服务费分开计收，金额单位为人民币。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="U助理" />
+  <meta property="og:title" content="费用咨询 — U助理" />
+  <meta property="og:description" content="U助理标准价与早鸟价：首次开通费与月服务费分开计收，金额单位为人民币。" />
+  <meta property="og:image" content="static/share-cover.jpg" />
+  <meta itemprop="name" content="费用咨询 — U助理" />
+  <meta itemprop="description" content="U助理标准价与早鸟价：首次开通费与月服务费分开计收，金额单位为人民币。" />
+  <meta itemprop="image" content="static/share-cover.jpg" />
+  <script>
+    (function () {
+      var img = new URL('static/share-cover.jpg', location.href).href;
+      var pageUrl = location.href.split('#')[0];
+      var image = document.querySelector('meta[property="og:image"]');
+      var item = document.querySelector('meta[itemprop="image"]');
+      if (image) image.setAttribute('content', img);
+      if (item) item.setAttribute('content', img);
+      var urlMeta = document.querySelector('meta[property="og:url"]');
+      if (!urlMeta) {
+        urlMeta = document.createElement('meta');
+        urlMeta.setAttribute('property', 'og:url');
+        document.head.appendChild(urlMeta);
+      }
+      urlMeta.setAttribute('content', pageUrl);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css?v=m100" />
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="about.html">
+        <span class="logo-mark">U</span>
+        <span class="logo-text"><span class="brand-word" aria-label="U助理"><span class="brand-char">U</span><span class="brand-char">助</span><span class="brand-char">理</span></span></span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="product.html">产品介绍</a>
+        <a href="pricing.html" class="active">费用咨询</a>
+        <a href="tools.html">销售全流程工具</a>
+      </nav>
+      <a class="nav-cta" href="about.html">联系我们</a>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-label">费用咨询</p>
+        <h1>定价与适用对象</h1>
+        <p class="page-hero__desc">
+          首次开通费与月服务费分开计收，金额单位为人民币。
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        <div class="plan-grid">
+          <article class="plan-card plan-card--standard reveal">
+            <h3>标准价</h3>
+            <ul class="plan-fees">
+              <li><span>首次开通</span><strong>1999<span>元</span></strong></li>
+              <li><span>月服务费</span><strong>699<span>元 / 月</span></strong></li>
+            </ul>
+            <ul class="plan-notes">
+              <li>常规定价基准</li>
+              <li>面向常规开通客户</li>
+            </ul>
+            <a class="btn btn-ghost" href="about.html">咨询开通</a>
+          </article>
+
+          <article class="plan-card plan-card--early reveal reveal-delay-1">
+            <span class="plan-badge">早鸟</span>
+            <h3>早鸟价</h3>
+            <ul class="plan-fees">
+              <li><span>首次开通</span><strong>999<span>元</span></strong></li>
+              <li><span>月服务费</span><strong>399<span>元 / 月</span></strong></li>
+            </ul>
+            <ul class="plan-notes">
+              <li>面向限时 / 限量客户</li>
+              <li>代理商火热招募中</li>
+            </ul>
+            <a class="btn btn-primary" href="about.html">咨询早鸟价</a>
+          </article>
+        </div>
+
+        <p class="plan-foot reveal">以上价格，具体以商务确认为准。</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 24px;">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="section-label">服务保障</p>
+          <h2 class="section-title">开通之外，我们还提供这些</h2>
+        </div>
+        <div class="grid-3">
+          <article class="feature-card reveal">
+            <h3>产品演示</h3>
+            <p>一对一远程演示核心能力与典型场景，帮助您快速判断是否匹配业务需求。</p>
+          </article>
+          <article class="feature-card reveal reveal-delay-1">
+            <h3>上手辅导</h3>
+            <p>协助完成安装连接与首次使用，缩短从了解到落地的时间。</p>
+          </article>
+          <article class="feature-card reveal reveal-delay-2">
+            <h3>持续迭代</h3>
+            <p>产品能力持续升级，服务期内可获得原始功能版本的更新与场景能力的扩展权益。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-band reveal">
+          <h2>想了解适合您的方案？</h2>
+          <p class="cta-lines">
+            <span>扫描客服二维码与我们联系。</span>
+            <span>我们会尽快回复。</span>
+          </p>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="about.html">联系客服</a>
+            <a class="btn btn-ghost" href="product.html">先看产品介绍</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="logo" href="about.html">
+            <span class="logo-mark">U</span>
+            <span class="logo-text"><span class="brand-word" aria-label="U助理"><span class="brand-char">U</span><span class="brand-char">助</span><span class="brand-char">理</span></span></span>
+          </a>
+          <p>专为销售人员打造的 AI 服务助手。<br />让 AI 负责执行，让人负责决策。</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>产品</h4>
+            <a href="product.html">产品介绍</a>
+            <a href="tools.html">销售全流程工具</a>
+            <a href="pricing.html">费用咨询</a>
+            <a href="index.html">宣传视频</a>
+            <a href="product.html#faq">常见问题</a>
+          </div>
+          <div class="footer-col">
+            <h4>公司</h4>
+            <a href="about.html">联系我们</a>
+            <a href="privacy.html">隐私政策</a>
+            <a href="terms.html">服务条款</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <div class="footer-legal-left">
+          <p class="footer-copyright">© 2026 U助理 · 让 AI 负责执行，让人负责决策</p>
+          <p class="footer-icp">
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">津ICP备2026004555号-5</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="back-top" aria-label="回到顶部" title="回到顶部">
+    <span class="back-top__ring" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5"></path>
+      <path d="M5 12l7-7 7 7"></path>
+    </svg>
+  </button>
+
+  <script src="js/main.js?v=m17"></script>
+</body>
+</html>
