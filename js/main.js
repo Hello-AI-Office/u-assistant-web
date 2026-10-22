@@ -16,6 +16,7 @@
   }
 
   if (isWeChat) {
+    document.documentElement.classList.add('is-wechat');
     if (typeof WeixinJSBridge === 'object') lockWeChatFont();
     else document.addEventListener('WeixinJSBridgeReady', lockWeChatFont, false);
   }
@@ -92,6 +93,13 @@
   }
 
   const reveals = document.querySelectorAll('.reveal');
+  function revealInView() {
+    reveals.forEach((el) => {
+      if (el.classList.contains('visible')) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('visible');
+    });
+  }
   if (reveals.length && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(
       (entries) => {
@@ -102,9 +110,14 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.01, rootMargin: '40px 0px 40px 0px' }
     );
     reveals.forEach((el) => io.observe(el));
+    revealInView();
+    window.addEventListener('scroll', revealInView, { passive: true });
+    window.addEventListener('resize', revealInView);
+    // 部分微信内核不派发首屏 IntersectionObserver，不滑就一直是透明
+    setTimeout(revealInView, 400);
   } else {
     reveals.forEach((el) => el.classList.add('visible'));
   }
@@ -136,24 +149,181 @@
       return Promise.resolve(true);
     };
 
+    var isAndroid = /Android/i.test(navigator.userAgent || '');
+
     muteOn();
     video.playsInline = true;
     video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('webkit-playsinline', 'true');
+    video.setAttribute('x5-playsinline', 'true');
+    video.setAttribute('x5-video-player-fullscreen', 'false');
+    // 安卓微信只有同层播放器（h5-page）才会静音自动播；h5 会停在封面，直到有一次点击
+    if (isWeChat && isAndroid) {
+      video.setAttribute('x5-video-player-type', 'h5-page');
+      video.preload = 'auto';
+    }
 
-    const armPlay = () => {
-      if (!video.paused) return;
-      tryPlay();
+    // 微信 X5 会按视频原始高度（1080）撑开占位，文案被顶到下一屏。窄屏按 16:9 写死盒子。
+    const pinHeroVideo = () => {
+      const inner = video.closest('.video-frame__inner');
+      const media = video.closest('.hero-split__media');
+      const narrow = window.matchMedia('(max-width: 980px)').matches || isWeChat;
+      if (!narrow) {
+        [inner, media, video].forEach((el) => {
+          if (!el) return;
+          ['height', 'max-height', 'padding-bottom', 'overflow', 'position', 'top', 'left', 'width', 'min-height'].forEach((prop) => {
+            el.style.removeProperty(prop);
+          });
+        });
+        return;
+      }
+      const width = (inner && (inner.clientWidth || inner.parentElement.clientWidth)) || 0;
+      if (!width) return;
+      const height = Math.round(width * 9 / 16);
+      if (inner) {
+        inner.style.setProperty('height', height + 'px', 'important');
+        inner.style.setProperty('max-height', height + 'px', 'important');
+        inner.style.setProperty('padding-bottom', '0', 'important');
+        inner.style.setProperty('overflow', 'hidden', 'important');
+      }
+      if (media) {
+        media.style.setProperty('min-height', '0', 'important');
+        media.style.setProperty('max-height', (height + 8) + 'px', 'important');
+        media.style.setProperty('overflow', 'hidden', 'important');
+      }
+      video.style.setProperty('position', 'absolute', 'important');
+      video.style.setProperty('top', '0', 'important');
+      video.style.setProperty('left', '0', 'important');
+      video.style.setProperty('width', '100%', 'important');
+      video.style.setProperty('height', '100%', 'important');
+      video.style.setProperty('max-height', '100%', 'important');
+    };
+
+    pinHeroVideo();
+    requestAnimationFrame(pinHeroVideo);
+    if (isWeChat) {
+      const copy = document.querySelector('.hero-split__copy');
+      const paintCopy = () => {
+        if (!copy) return;
+        void copy.offsetHeight;
+      };
+      paintCopy();
+      window.addEventListener('load', paintCopy);
+      setTimeout(paintCopy, 250);
+    }
+    ['loadedmetadata', 'loadeddata', 'canplay', 'resize'].forEach((name) => {
+      video.addEventListener(name, pinHeroVideo);
+    });
+    window.addEventListener('resize', pinHeroVideo);
+    window.addEventListener('orientationchange', pinHeroVideo);
+
+    // 安卓微信在 WeixinJSBridgeReady 之前调用 play() 会被拒绝，并且这次失败会把后续非点击的 play() 也锁死。
+    // 有声的 play() 同样会被拒绝并锁死，所以自动播放必须先静音，画面起来后再尝试开声。
+    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent || '') || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var wechatPlayUnlocked = !isWeChat;
+    var playbackChosen = false;
+    var soundGestureBound = false;
+    var soundOpened = false;
+
+    const openSoundOnFirstTouch = () => {
+      if (soundGestureBound || soundOpened) return;
+      soundGestureBound = true;
+      const unlock = (e) => {
+        if (soundBtn && e.target && soundBtn.contains(e.target)) return;
+        muteOff();
+        const p = video.play();
+        const done = (failed) => {
+          if (failed && video.paused) {
+            muteOn();
+            video.play();
+          } else {
+            soundOpened = true;
+          }
+          document.removeEventListener('touchstart', unlock, true);
+          document.removeEventListener('pointerdown', unlock, true);
+          document.removeEventListener('click', unlock, true);
+          syncSoundUi();
+        };
+        if (p && typeof p.then === 'function') p.then(function () { done(false); }, function () { done(true); });
+        else done(false);
+      };
+      document.addEventListener('touchstart', unlock, true);
+      document.addEventListener('pointerdown', unlock, true);
+      document.addEventListener('click', unlock, true);
+    };
+
+    const tryOpenSound = () => {
+      if (soundOpened || video.paused) {
+        syncSoundUi();
+        return;
+      }
+      if (isWeChat || isIOS) {
+        openSoundOnFirstTouch();
+        syncSoundUi();
+        return;
+      }
+      var mark = video.currentTime;
+      muteOff();
+      setTimeout(function () {
+        if (video.paused || video.currentTime <= mark) {
+          muteOn();
+          tryPlay().then(function () {
+            openSoundOnFirstTouch();
+            syncSoundUi();
+          });
+          return;
+        }
+        soundOpened = true;
+        syncSoundUi();
+      }, 120);
+    };
+
+    const startPlayback = () => {
+      if (isWeChat && !wechatPlayUnlocked) return;
+      if (playbackChosen) {
+        if (video.paused && !soundOpened) {
+          muteOn();
+          tryPlay();
+        }
+        return;
+      }
+      playbackChosen = true;
+      muteOn();
+      tryPlay().then(function (ok) {
+        if (ok === false || video.paused) {
+          openSoundOnFirstTouch();
+          syncSoundUi();
+          return;
+        }
+        tryOpenSound();
+      });
+    };
+
+    const playFromWeChatBridge = () => {
+      const start = () => {
+        wechatPlayUnlocked = true;
+        startPlayback();
+      };
+      if (window.WeixinJSBridge && typeof WeixinJSBridge.invoke === 'function') {
+        WeixinJSBridge.invoke('getNetworkType', {}, start);
+      } else {
+        start();
+      }
     };
 
     ['loadeddata', 'canplay', 'loadedmetadata'].forEach((name) => {
-      video.addEventListener(name, armPlay);
+      video.addEventListener(name, startPlayback);
     });
-    document.addEventListener('WeixinJSBridgeReady', armPlay, false);
     document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) armPlay();
+      if (!document.hidden) startPlayback();
     });
-    armPlay();
+
+    if (isWeChat) {
+      if (window.WeixinJSBridge) playFromWeChatBridge();
+      else document.addEventListener('WeixinJSBridgeReady', playFromWeChatBridge, false);
+    } else {
+      startPlayback();
+    }
 
     const syncSoundUi = () => {
       if (!soundBtn) return;

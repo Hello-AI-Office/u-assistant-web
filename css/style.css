@@ -582,6 +582,7 @@ html[data-nav="contact"] #nav-contact:hover {
   letter-spacing: 0.08em;
   line-height: 1.08;
   margin-bottom: 14px;
+  isolation: isolate;
 }
 
 .hero-brand .brand-word {
@@ -630,9 +631,11 @@ html[data-nav="contact"] #nav-contact:hover {
 
 .hero-split__media {
   position: relative;
-  z-index: 3;
+  z-index: 1;
   width: 100%;
   max-width: 100%;
+  min-width: 0;
+  min-height: 0;
   display: flex;
   justify-content: stretch;
   align-self: center;
@@ -679,23 +682,36 @@ html[data-nav="contact"] #nav-contact:hover {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  max-height: calc(100vw * 9 / 16);
   border-radius: 16px;
   overflow: hidden;
   background: #000;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* 旧版微信内核不认 aspect-ratio，用固定比例撑开，避免 video 固有高度把页面顶开 */
+@supports not (aspect-ratio: 16 / 9) {
+  .video-frame__inner {
+    height: 0;
+    padding-bottom: 56.25%;
+    max-height: none;
+  }
 }
 
 .video-frame__inner video {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   z-index: 0;
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   object-position: center center;
   background: #000;
-  /* 保持清晰，避免被拉伸发虚 */
   image-rendering: auto;
-  transform: translateZ(0);
 }
 
 .video-sound {
@@ -3299,6 +3315,69 @@ body.share-open {
     order: -1;
     transform: none !important;
     justify-content: stretch;
+    overflow: hidden;
+    min-height: 0;
+    max-height: calc(100vw * 9 / 16);
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-split__copy,
+  .hero-split__media {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* 微信把 background-clip:text 的透明填充漫到后面的字和实心按钮上，滑一下才重绘。
+     currentcolor 挡不住，必须写成具体颜色，并关掉文字裁切。 */
+  .hero-split__copy .section-label,
+  .hero-split__copy .hero-title,
+  .hero-split__copy .hero-desc,
+  .hero-split__copy .hero-meta span,
+  .hero-split__copy .btn {
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+  }
+
+  .hero-split__copy .section-label {
+    -webkit-text-fill-color: #d2c4ff;
+  }
+
+  .hero-split__copy .hero-title {
+    -webkit-text-fill-color: #eef1f6;
+  }
+
+  .hero-split__copy .hero-desc,
+  .hero-split__copy .hero-meta span,
+  .hero-split__copy .btn-ghost {
+    -webkit-text-fill-color: #9ea7b8;
+  }
+
+  .hero-split__copy .btn-primary {
+    -webkit-text-fill-color: #f4f6fb;
+    color: #f4f6fb;
+    background-image: linear-gradient(135deg, #4d6ef0 0%, #7c5cdb 50%, #9b7aef 100%);
+  }
+
+  /* 首屏大字本身也是透明裁切。微信里渐变经常第一帧不画，整段标题就是一块空白。
+     导航里的小 logo 保留渐变；这里改成同一实色，三个字不再被裁切。 */
+  html.is-wechat .hero-split__copy .brand-char,
+  html.is-wechat .hero-split__copy .brand-char:nth-child(1),
+  html.is-wechat .hero-split__copy .brand-char:nth-child(2),
+  html.is-wechat .hero-split__copy .brand-char:nth-child(3) {
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    -webkit-text-fill-color: #d2c4ff !important;
+    color: #d2c4ff !important;
+    filter: none !important;
+  }
+
+  html.is-wechat .hero-split__copy {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
   }
 
   .video-frame {
@@ -4880,6 +4959,7 @@ body.share-open {
     font-size: 18px;
     line-height: 1.45;
     color: #eef1f6;
+    -webkit-text-fill-color: #eef1f6;
   }
 
   .hero-desc,
@@ -4899,10 +4979,17 @@ body.share-open {
     color: #c5cedb;
   }
 
+  .hero-split__copy .hero-desc,
+  .hero-split__copy .hero-meta span,
+  .hero-split__copy .btn-ghost {
+    -webkit-text-fill-color: #c5cedb;
+  }
+
   .section-label,
   .page-hero .section-label {
     font-size: 13px;
     color: var(--accent-bright);
+    -webkit-text-fill-color: #d2c4ff;
   }
 
   .section-title,

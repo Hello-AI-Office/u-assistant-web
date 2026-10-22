@@ -16,6 +16,9 @@
   <meta itemprop="image" content="static/share-cover.jpg" />
   <script>
     (function () {
+      if (/MicroMessenger/i.test(navigator.userAgent || '')) {
+        document.documentElement.classList.add('is-wechat');
+      }
       var img = new URL('static/share-cover.jpg', location.href).href;
       var pageUrl = location.href.split('#')[0];
       var image = document.querySelector('meta[property="og:image"]');
@@ -31,7 +34,7 @@
       urlMeta.setAttribute('content', pageUrl);
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=m102" />
+  <link rel="stylesheet" href="css/style.css?v=m105" />
 </head>
 <body>
   <div class="bg-mesh" aria-hidden="true"></div>
@@ -86,13 +89,15 @@
             <video
               id="hero-video"
               src="static/u_.mp4"
+              poster="static/hero-poster.jpg"
+              width="1920"
+              height="1080"
               autoplay
               muted
               loop
               playsinline
-              webkit-playsinline
-              x5-playsinline
-              x5-video-player-type="h5-page"
+              webkit-playsinline="true"
+              x5-playsinline="true"
               x5-video-player-fullscreen="false"
               preload="auto"
             ></video>
@@ -320,6 +325,6 @@
     </svg>
   </button>
 
-  <script src="js/main.js?v=m17"></script>
+  <script src="js/main.js?v=m22"></script>
 </body>
 </html>
